@@ -16,6 +16,8 @@ searchInput.addEventListener('input', debounce(getCountryData, DEBOUNCE_DELAY));
 // функция получения данных страны
 function getCountryData(e) {
   const countryName = e.target.value.trim();
+  resetMarkup(countryList);
+  resetMarkup(countryInfo);
   if (!countryName) {
     return;
   }
@@ -27,12 +29,10 @@ function getCountryData(e) {
   fetchCountries(countryName)
     .then(data => {
       if (data.length === 1) {
-        resetMarkup(countryList);
         markupCountry(data[0]);
       }
       // если от 2 до 10 стран то только 3 реквизита
       else if (data.length >= 2 && data.length <= 10) {
-        resetMarkup(countryInfo);
         markupCountries(data);
       }
       // в противном случаем выводим сообшение
