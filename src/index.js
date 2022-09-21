@@ -32,6 +32,7 @@ function getCountryData(e) {
       }
       // если от 2 до 10 стран то только 3 реквизита
       else if (data.length >= 2 && data.length <= 10) {
+        resetMarkup(countryInfo);
         markupCountries(data);
       }
       // в противном случаем выводим сообшение
