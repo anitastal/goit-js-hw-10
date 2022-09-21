@@ -27,6 +27,7 @@ function getCountryData(e) {
   fetchCountries(countryName)
     .then(data => {
       if (data.length === 1) {
+        resetMarkup(countryList);
         markupCountry(data[0]);
       }
       // если от 2 до 10 стран то только 3 реквизита
@@ -80,4 +81,8 @@ function markupCountries(countryData) {
     </li>`
     );
   });
+}
+// фукнкция очистки перед вводом
+function resetMarkup(element) {
+  element.innerHTML = '';
 }
